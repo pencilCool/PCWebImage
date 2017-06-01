@@ -32,12 +32,12 @@ class YYImageCache {
     var allowAnimatedImage = true
     var decodeForDisplay = true
     
-    public static var sharedCache:YYImageCache {
+    public static let shared:YYImageCache = {
         var cachePath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first!
         cachePath = cachePath.appending("com.pencilCool.yykit")
         let cache = YYImageCache(with: cachePath)
         return cache!
-    }
+    }()
     
     
     private lazy var YYImageCacheIOQueue: DispatchQueue = {

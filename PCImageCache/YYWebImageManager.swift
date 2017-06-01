@@ -45,3 +45,37 @@ public struct YYWebImageOptions:OptionSet {
         self.rawValue = rawValue
     }
 }
+
+enum  YYWebImageFromType {
+    case none, memoryCacheFast,memoryCache,diskCache,remote
+}
+
+enum YYWebImageStage {
+    case progress
+    case cancelled
+    case finished
+}
+
+typealias YYWebImageProgressBlock = (Int,Int) -> Void
+
+typealias YYWebImageTransformBlock = (UIImage, URL) -> UIImage?
+
+typealias YYWebImageCompletionBlock = (UIImage?, URL, YYWebImageFromType, YYWebImageStage) throws -> Void
+
+
+class YYWebImageManager {
+    public static let shared:YYWebImageManager = {
+       let cache = YYImageCache.shared
+       var  queue = OperationQueue.current
+       queue?.qualityOfService = .background
+        return YYWebImageManager(withCache: cache, queue: queue!)
+    }()
+    
+    init(withCache cache:YYImageCache, queue que:OperationQueue) {
+        
+    }
+    init() {
+        fatalError("YYWebImageManager init error -- Use the designated initializer to init")
+       
+    }
+}
