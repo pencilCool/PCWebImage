@@ -16,7 +16,7 @@ public struct YYImageCacheType:OptionSet {
     public static let none    = YYImageCacheType(rawValue: 1 << 0)
     public static let memory  = YYImageCacheType(rawValue: 1 << 0)
     public static let disk    =  YYImageCacheType(rawValue: 1 << 0)
-    public static let all: YYImageCacheType = [.memory, .disk]
+    public static let all:     YYImageCacheType = [.memory, .disk]
     public init(rawValue: Int) {
         self.rawValue = rawValue
     }
@@ -71,19 +71,60 @@ class YYImageCache {
         memoryCache.ageLimit = 12 * 60 * 60
         
     }
-    
-    // 在后台执行，迅速返回
-    func setImage(_ image:UIImage, forKey key:String) {
-        fatalError()
+  
+    func setImage(_ image:UIImage, forKey key:String?) {
+       setImage(image, imageData: nil, forKey: key, with: .all)
     }
     
     func setImage(_ image:UIImage?, imageData data: Data?,
-                  forKey key:String,with type:YYImageCacheType) {
-        fatalError()
+                  forKey key:String?,with type:YYImageCacheType) {
+        guard let key = key, image != nil || (data?.count)! > 0  else {
+            return
+        }
+        
+        // MARK: cache to memory
+        if type.contains(.memory) {
+            if let img = image{
+                if img.yy_isDecodedForDisplay {
+                    memoryCache.setObject(img, forKey: key, withCost: imageCost(img))
+                } else {
+                    YYImageCacheDecodeQueue.async {
+                        [weak self]   in
+                        guard let _self = self else {return}
+                        _self.memoryCache.setObject(img.yy_imageByDecoded(), forKey: key, withCost: _self.imageCost(img))
+                    }
+                }
+            } else if let imageData = data {
+                YYImageCacheDecodeQueue.async {
+                    [weak self] in
+                    guard let _self = self else {return}
+                    let newImage = _self.image(from: imageData)
+                    _self.memoryCache.setObject(newImage, forKey: key, withCost: _self.imageCost(newImage))
+                }
+            }
+        }
+        
+        // MARK: cache to disk
+        if type.contains(.disk) {
+            if let imageData = data {
+                if let img = image {
+                    YYDiskCache.setExtendedData(NSKeyedArchiver.archivedData(withRootObject: img.scale), to: imageData)
+                }
+                self.diskCache.setObject(imageData as NSCoding, forKey: key)
+            } else if let img = image {
+                YYImageCacheIOQueue.async {
+                    [weak self] in
+                    guard let _self = self else {return}
+                    let data = img.yy_imageDataRepresentation()!
+                    YYDiskCache.setExtendedData(NSKeyedArchiver.archivedData(withRootObject: img.scale), to: data as Any)
+                    _self.diskCache.setObject(data as NSCoding, forKey: key)
+                }
+            }
+        }
     }
     
     func removeImage(forKey key:String){
-        fatalError()
+        removeImage(forKey: key, with: .all)
     }
     
     func removeImage(forKey key:String, with type: YYImageCacheType){
@@ -125,7 +166,7 @@ class YYImageCache {
         
     }
     
-    private func imageCost(_ image: UIImage) -> Int {
+    private func imageCost(_ image: UIImage) -> UInt {
     
         guard let cgImage = image.cgImage else {
             return 1
@@ -137,7 +178,7 @@ class YYImageCache {
         guard cost == 0 else {
             return 1
         }
-        return cost
+        return UInt(cost)
     }
     
     private func image(from data: Data) -> UIImage {
