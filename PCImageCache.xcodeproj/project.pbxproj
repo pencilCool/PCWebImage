@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26CE71BBE94D154C16DB41C6 /* Pods_PCImageCacheUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB9F97B7F6D210CCD7E31D6 /* Pods_PCImageCacheUITests.framework */; };
+		704E1DAADBB75C505876CA57 /* Pods_PCImageCacheTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 107B6436607149951E2FEF51 /* Pods_PCImageCacheTests.framework */; };
+		CDDBAD6F0D872AE61BCEC696 /* Pods_PCImageCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C05B445AEC3887211EC158A0 /* Pods_PCImageCache.framework */; };
+		EC48C7B31EDF9E3200E62C49 /* YYCache.m in Sources */ = {isa = PBXBuildFile; fileRef = EC48C7AC1EDF9E3200E62C49 /* YYCache.m */; };
+		EC48C7B41EDF9E3200E62C49 /* YYDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = EC48C7AE1EDF9E3200E62C49 /* YYDiskCache.m */; };
+		EC48C7B51EDF9E3200E62C49 /* YYKVStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = EC48C7B01EDF9E3200E62C49 /* YYKVStorage.m */; };
+		EC48C7B61EDF9E3200E62C49 /* YYMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = EC48C7B21EDF9E3200E62C49 /* YYMemoryCache.m */; };
+		EC48C7B91EDF9F8400E62C49 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EC48C7B81EDF9F8400E62C49 /* libsqlite3.0.tbd */; };
 		EC7B0C1F1EDED235002505CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7B0C1E1EDED235002505CF /* AppDelegate.swift */; };
 		EC7B0C211EDED235002505CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7B0C201EDED235002505CF /* ViewController.swift */; };
 		EC7B0C241EDED236002505CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC7B0C221EDED236002505CF /* Main.storyboard */; };
@@ -14,6 +22,7 @@
 		EC7B0C291EDED236002505CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC7B0C271EDED236002505CF /* LaunchScreen.storyboard */; };
 		EC7B0C341EDED236002505CF /* PCImageCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7B0C331EDED236002505CF /* PCImageCacheTests.swift */; };
 		EC7B0C3F1EDED236002505CF /* PCImageCacheUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7B0C3E1EDED236002505CF /* PCImageCacheUITests.swift */; };
+		EC7B0C4D1EDED4EC002505CF /* YYImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7B0C4C1EDED4EC002505CF /* YYImageCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +43,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		107B6436607149951E2FEF51 /* Pods_PCImageCacheTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PCImageCacheTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		238A070A6FBA1A3A7D4368A1 /* Pods-PCImageCache.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PCImageCache.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PCImageCache/Pods-PCImageCache.debug.xcconfig"; sourceTree = "<group>"; };
+		273EA3EE922CC881FBA26C89 /* Pods-PCImageCacheTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PCImageCacheTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PCImageCacheTests/Pods-PCImageCacheTests.release.xcconfig"; sourceTree = "<group>"; };
+		4AAA0545CFF78DD6E4EBCCDC /* Pods-PCImageCacheUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PCImageCacheUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PCImageCacheUITests/Pods-PCImageCacheUITests.release.xcconfig"; sourceTree = "<group>"; };
+		55C02669999E735A03339EDF /* Pods-PCImageCacheTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PCImageCacheTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PCImageCacheTests/Pods-PCImageCacheTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C05B445AEC3887211EC158A0 /* Pods_PCImageCache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PCImageCache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1CEE04F1F877C1CCEFAAA5B /* Pods-PCImageCacheUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PCImageCacheUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PCImageCacheUITests/Pods-PCImageCacheUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		DA366E06C83CF1313EE6275C /* Pods-PCImageCache.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PCImageCache.release.xcconfig"; path = "Pods/Target Support Files/Pods-PCImageCache/Pods-PCImageCache.release.xcconfig"; sourceTree = "<group>"; };
+		DCB9F97B7F6D210CCD7E31D6 /* Pods_PCImageCacheUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PCImageCacheUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC48C7AB1EDF9E3200E62C49 /* YYCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYCache.h; sourceTree = "<group>"; };
+		EC48C7AC1EDF9E3200E62C49 /* YYCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYCache.m; sourceTree = "<group>"; };
+		EC48C7AD1EDF9E3200E62C49 /* YYDiskCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYDiskCache.h; sourceTree = "<group>"; };
+		EC48C7AE1EDF9E3200E62C49 /* YYDiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYDiskCache.m; sourceTree = "<group>"; };
+		EC48C7AF1EDF9E3200E62C49 /* YYKVStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYKVStorage.h; sourceTree = "<group>"; };
+		EC48C7B01EDF9E3200E62C49 /* YYKVStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYKVStorage.m; sourceTree = "<group>"; };
+		EC48C7B11EDF9E3200E62C49 /* YYMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYMemoryCache.h; sourceTree = "<group>"; };
+		EC48C7B21EDF9E3200E62C49 /* YYMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYMemoryCache.m; sourceTree = "<group>"; };
+		EC48C7B81EDF9F8400E62C49 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		EC7B0C1B1EDED235002505CF /* PCImageCache.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PCImageCache.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC7B0C1E1EDED235002505CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC7B0C201EDED235002505CF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +74,8 @@
 		EC7B0C3A1EDED236002505CF /* PCImageCacheUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PCImageCacheUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC7B0C3E1EDED236002505CF /* PCImageCacheUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PCImageCacheUITests.swift; sourceTree = "<group>"; };
 		EC7B0C401EDED236002505CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC7B0C4C1EDED4EC002505CF /* YYImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YYImageCache.swift; sourceTree = "<group>"; };
+		EC7B0C541EDEF7A6002505CF /* PCImageCache-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PCImageCache-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +83,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC48C7B91EDF9F8400E62C49 /* libsqlite3.0.tbd in Frameworks */,
+				CDDBAD6F0D872AE61BCEC696 /* Pods_PCImageCache.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				704E1DAADBB75C505876CA57 /* Pods_PCImageCacheTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,19 +100,64 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26CE71BBE94D154C16DB41C6 /* Pods_PCImageCacheUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0DF7833B2BED093C90A6C683 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EC48C7B81EDF9F8400E62C49 /* libsqlite3.0.tbd */,
+				C05B445AEC3887211EC158A0 /* Pods_PCImageCache.framework */,
+				107B6436607149951E2FEF51 /* Pods_PCImageCacheTests.framework */,
+				DCB9F97B7F6D210CCD7E31D6 /* Pods_PCImageCacheUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		81C8AE353559679BAF1E4EDC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				238A070A6FBA1A3A7D4368A1 /* Pods-PCImageCache.debug.xcconfig */,
+				DA366E06C83CF1313EE6275C /* Pods-PCImageCache.release.xcconfig */,
+				55C02669999E735A03339EDF /* Pods-PCImageCacheTests.debug.xcconfig */,
+				273EA3EE922CC881FBA26C89 /* Pods-PCImageCacheTests.release.xcconfig */,
+				C1CEE04F1F877C1CCEFAAA5B /* Pods-PCImageCacheUITests.debug.xcconfig */,
+				4AAA0545CFF78DD6E4EBCCDC /* Pods-PCImageCacheUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		EC48C7B71EDF9E5700E62C49 /* YYCache */ = {
+			isa = PBXGroup;
+			children = (
+				EC48C7AB1EDF9E3200E62C49 /* YYCache.h */,
+				EC48C7AC1EDF9E3200E62C49 /* YYCache.m */,
+				EC48C7AD1EDF9E3200E62C49 /* YYDiskCache.h */,
+				EC48C7AE1EDF9E3200E62C49 /* YYDiskCache.m */,
+				EC48C7AF1EDF9E3200E62C49 /* YYKVStorage.h */,
+				EC48C7B01EDF9E3200E62C49 /* YYKVStorage.m */,
+				EC48C7B11EDF9E3200E62C49 /* YYMemoryCache.h */,
+				EC48C7B21EDF9E3200E62C49 /* YYMemoryCache.m */,
+			);
+			name = YYCache;
+			path = PCImageCache;
+			sourceTree = "<group>";
+		};
 		EC7B0C121EDED235002505CF = {
 			isa = PBXGroup;
 			children = (
+				EC7B0C541EDEF7A6002505CF /* PCImageCache-Bridging-Header.h */,
+				EC48C7B71EDF9E5700E62C49 /* YYCache */,
 				EC7B0C1D1EDED235002505CF /* PCImageCache */,
 				EC7B0C321EDED236002505CF /* PCImageCacheTests */,
 				EC7B0C3D1EDED236002505CF /* PCImageCacheUITests */,
 				EC7B0C1C1EDED235002505CF /* Products */,
+				81C8AE353559679BAF1E4EDC /* Pods */,
+				0DF7833B2BED093C90A6C683 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +174,7 @@
 		EC7B0C1D1EDED235002505CF /* PCImageCache */ = {
 			isa = PBXGroup;
 			children = (
+				EC7B0C4E1EDED4F2002505CF /* PCImageCache */,
 				EC7B0C1E1EDED235002505CF /* AppDelegate.swift */,
 				EC7B0C201EDED235002505CF /* ViewController.swift */,
 				EC7B0C221EDED236002505CF /* Main.storyboard */,
@@ -125,6 +203,14 @@
 			path = PCImageCacheUITests;
 			sourceTree = "<group>";
 		};
+		EC7B0C4E1EDED4F2002505CF /* PCImageCache */ = {
+			isa = PBXGroup;
+			children = (
+				EC7B0C4C1EDED4EC002505CF /* YYImageCache.swift */,
+			);
+			name = PCImageCache;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +218,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EC7B0C431EDED236002505CF /* Build configuration list for PBXNativeTarget "PCImageCache" */;
 			buildPhases = (
+				EB19E3868C8F432DAD967E35 /* [CP] Check Pods Manifest.lock */,
 				EC7B0C171EDED235002505CF /* Sources */,
 				EC7B0C181EDED235002505CF /* Frameworks */,
 				EC7B0C191EDED235002505CF /* Resources */,
+				A0BAFC18AB1927EF3C3B1C84 /* [CP] Embed Pods Frameworks */,
+				AE2B5D4E650F48B79BD15041 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,9 +238,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EC7B0C461EDED236002505CF /* Build configuration list for PBXNativeTarget "PCImageCacheTests" */;
 			buildPhases = (
+				CB3EB7A5B48C3167732CCEAB /* [CP] Check Pods Manifest.lock */,
 				EC7B0C2B1EDED236002505CF /* Sources */,
 				EC7B0C2C1EDED236002505CF /* Frameworks */,
 				EC7B0C2D1EDED236002505CF /* Resources */,
+				65C70FC376D2F5D3AC97E7BC /* [CP] Embed Pods Frameworks */,
+				27E03A4A27ECBD1DC3E58439 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,9 +259,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EC7B0C491EDED236002505CF /* Build configuration list for PBXNativeTarget "PCImageCacheUITests" */;
 			buildPhases = (
+				F39DFFF0C17BF2B164CB0EE1 /* [CP] Check Pods Manifest.lock */,
 				EC7B0C361EDED236002505CF /* Sources */,
 				EC7B0C371EDED236002505CF /* Frameworks */,
 				EC7B0C381EDED236002505CF /* Resources */,
+				B54DE119E6389365F1BFD2D2 /* [CP] Embed Pods Frameworks */,
+				25BB8CE933D486703CBE1BD4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -257,13 +352,156 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		25BB8CE933D486703CBE1BD4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PCImageCacheUITests/Pods-PCImageCacheUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		27E03A4A27ECBD1DC3E58439 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PCImageCacheTests/Pods-PCImageCacheTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		65C70FC376D2F5D3AC97E7BC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PCImageCacheTests/Pods-PCImageCacheTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A0BAFC18AB1927EF3C3B1C84 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PCImageCache/Pods-PCImageCache-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AE2B5D4E650F48B79BD15041 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PCImageCache/Pods-PCImageCache-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B54DE119E6389365F1BFD2D2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PCImageCacheUITests/Pods-PCImageCacheUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CB3EB7A5B48C3167732CCEAB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EB19E3868C8F432DAD967E35 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F39DFFF0C17BF2B164CB0EE1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EC7B0C171EDED235002505CF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				EC7B0C211EDED235002505CF /* ViewController.swift in Sources */,
+				EC48C7B61EDF9E3200E62C49 /* YYMemoryCache.m in Sources */,
+				EC48C7B51EDF9E3200E62C49 /* YYKVStorage.m in Sources */,
+				EC7B0C4D1EDED4EC002505CF /* YYImageCache.swift in Sources */,
+				EC48C7B41EDF9E3200E62C49 /* YYDiskCache.m in Sources */,
 				EC7B0C1F1EDED235002505CF /* AppDelegate.swift in Sources */,
+				EC48C7B31EDF9E3200E62C49 /* YYCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +651,7 @@
 		};
 		EC7B0C441EDED236002505CF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 238A070A6FBA1A3A7D4368A1 /* Pods-PCImageCache.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4BADWEEE97;
@@ -420,12 +659,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tangyuhua.com.PCImageCache;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PCImageCache-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		EC7B0C451EDED236002505CF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA366E06C83CF1313EE6275C /* Pods-PCImageCache.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4BADWEEE97;
@@ -433,12 +674,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tangyuhua.com.PCImageCache;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PCImageCache-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		EC7B0C471EDED236002505CF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 55C02669999E735A03339EDF /* Pods-PCImageCacheTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -454,6 +697,7 @@
 		};
 		EC7B0C481EDED236002505CF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 273EA3EE922CC881FBA26C89 /* Pods-PCImageCacheTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -469,6 +713,7 @@
 		};
 		EC7B0C4A1EDED236002505CF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C1CEE04F1F877C1CCEFAAA5B /* Pods-PCImageCacheUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 4BADWEEE97;
@@ -483,6 +728,7 @@
 		};
 		EC7B0C4B1EDED236002505CF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4AAA0545CFF78DD6E4EBCCDC /* Pods-PCImageCacheUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 4BADWEEE97;
@@ -514,6 +760,7 @@
 				EC7B0C451EDED236002505CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EC7B0C461EDED236002505CF /* Build configuration list for PBXNativeTarget "PCImageCacheTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +769,7 @@
 				EC7B0C481EDED236002505CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EC7B0C491EDED236002505CF /* Build configuration list for PBXNativeTarget "PCImageCacheUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +778,7 @@
 				EC7B0C4B1EDED236002505CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
