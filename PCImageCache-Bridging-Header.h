@@ -9,4 +9,5 @@
 #ifndef PCImageCache_Bridging_Header_h
 #define PCImageCache_Bridging_Header_h
 #import "YYCache.h"
+#import "YYImage.h"
 #endif /* PCImageCache_Bridging_Header_h */

@@ -15,6 +15,12 @@
 		EC48C7B51EDF9E3200E62C49 /* YYKVStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = EC48C7B01EDF9E3200E62C49 /* YYKVStorage.m */; };
 		EC48C7B61EDF9E3200E62C49 /* YYMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = EC48C7B21EDF9E3200E62C49 /* YYMemoryCache.m */; };
 		EC48C7B91EDF9F8400E62C49 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EC48C7B81EDF9F8400E62C49 /* libsqlite3.0.tbd */; };
+		EC48C7C91EDFB8D900E62C49 /* YYAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC48C7BF1EDFB8D900E62C49 /* YYAnimatedImageView.m */; };
+		EC48C7CA1EDFB8D900E62C49 /* YYFrameImage.m in Sources */ = {isa = PBXBuildFile; fileRef = EC48C7C11EDFB8D900E62C49 /* YYFrameImage.m */; };
+		EC48C7CB1EDFB8D900E62C49 /* YYImage.m in Sources */ = {isa = PBXBuildFile; fileRef = EC48C7C31EDFB8D900E62C49 /* YYImage.m */; };
+		EC48C7CC1EDFB8D900E62C49 /* YYImageCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = EC48C7C51EDFB8D900E62C49 /* YYImageCoder.m */; };
+		EC48C7CD1EDFB8D900E62C49 /* YYSpriteSheetImage.m in Sources */ = {isa = PBXBuildFile; fileRef = EC48C7C71EDFB8D900E62C49 /* YYSpriteSheetImage.m */; };
+		EC48C7CF1EDFBE5D00E62C49 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EC48C7CE1EDFBE5D00E62C49 /* libz.tbd */; };
 		EC7B0C1F1EDED235002505CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7B0C1E1EDED235002505CF /* AppDelegate.swift */; };
 		EC7B0C211EDED235002505CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7B0C201EDED235002505CF /* ViewController.swift */; };
 		EC7B0C241EDED236002505CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC7B0C221EDED236002505CF /* Main.storyboard */; };
@@ -61,6 +67,17 @@
 		EC48C7B11EDF9E3200E62C49 /* YYMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYMemoryCache.h; sourceTree = "<group>"; };
 		EC48C7B21EDF9E3200E62C49 /* YYMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYMemoryCache.m; sourceTree = "<group>"; };
 		EC48C7B81EDF9F8400E62C49 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		EC48C7BE1EDFB8D900E62C49 /* YYAnimatedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYAnimatedImageView.h; sourceTree = "<group>"; };
+		EC48C7BF1EDFB8D900E62C49 /* YYAnimatedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYAnimatedImageView.m; sourceTree = "<group>"; };
+		EC48C7C01EDFB8D900E62C49 /* YYFrameImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFrameImage.h; sourceTree = "<group>"; };
+		EC48C7C11EDFB8D900E62C49 /* YYFrameImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFrameImage.m; sourceTree = "<group>"; };
+		EC48C7C21EDFB8D900E62C49 /* YYImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYImage.h; sourceTree = "<group>"; };
+		EC48C7C31EDFB8D900E62C49 /* YYImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYImage.m; sourceTree = "<group>"; };
+		EC48C7C41EDFB8D900E62C49 /* YYImageCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYImageCoder.h; sourceTree = "<group>"; };
+		EC48C7C51EDFB8D900E62C49 /* YYImageCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYImageCoder.m; sourceTree = "<group>"; };
+		EC48C7C61EDFB8D900E62C49 /* YYSpriteSheetImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYSpriteSheetImage.h; sourceTree = "<group>"; };
+		EC48C7C71EDFB8D900E62C49 /* YYSpriteSheetImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYSpriteSheetImage.m; sourceTree = "<group>"; };
+		EC48C7CE1EDFBE5D00E62C49 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		EC7B0C1B1EDED235002505CF /* PCImageCache.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PCImageCache.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC7B0C1E1EDED235002505CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC7B0C201EDED235002505CF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC48C7CF1EDFBE5D00E62C49 /* libz.tbd in Frameworks */,
 				EC48C7B91EDF9F8400E62C49 /* libsqlite3.0.tbd in Frameworks */,
 				CDDBAD6F0D872AE61BCEC696 /* Pods_PCImageCache.framework in Frameworks */,
 			);
@@ -110,6 +128,7 @@
 		0DF7833B2BED093C90A6C683 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EC48C7CE1EDFBE5D00E62C49 /* libz.tbd */,
 				EC48C7B81EDF9F8400E62C49 /* libsqlite3.0.tbd */,
 				C05B445AEC3887211EC158A0 /* Pods_PCImageCache.framework */,
 				107B6436607149951E2FEF51 /* Pods_PCImageCacheTests.framework */,
@@ -131,7 +150,7 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		EC48C7B71EDF9E5700E62C49 /* YYCache */ = {
+		EC48C7B71EDF9E5700E62C49 /* Cache */ = {
 			isa = PBXGroup;
 			children = (
 				EC48C7AB1EDF9E3200E62C49 /* YYCache.h */,
@@ -143,15 +162,34 @@
 				EC48C7B11EDF9E3200E62C49 /* YYMemoryCache.h */,
 				EC48C7B21EDF9E3200E62C49 /* YYMemoryCache.m */,
 			);
-			name = YYCache;
+			name = Cache;
 			path = PCImageCache;
+			sourceTree = "<group>";
+		};
+		EC48C7C81EDFB8D900E62C49 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				EC48C7BE1EDFB8D900E62C49 /* YYAnimatedImageView.h */,
+				EC48C7BF1EDFB8D900E62C49 /* YYAnimatedImageView.m */,
+				EC48C7C01EDFB8D900E62C49 /* YYFrameImage.h */,
+				EC48C7C11EDFB8D900E62C49 /* YYFrameImage.m */,
+				EC48C7C21EDFB8D900E62C49 /* YYImage.h */,
+				EC48C7C31EDFB8D900E62C49 /* YYImage.m */,
+				EC48C7C41EDFB8D900E62C49 /* YYImageCoder.h */,
+				EC48C7C51EDFB8D900E62C49 /* YYImageCoder.m */,
+				EC48C7C61EDFB8D900E62C49 /* YYSpriteSheetImage.h */,
+				EC48C7C71EDFB8D900E62C49 /* YYSpriteSheetImage.m */,
+			);
+			name = Image;
+			path = ../../../ThirdLibrary/YYWebImage/YYWebImage/Image;
 			sourceTree = "<group>";
 		};
 		EC7B0C121EDED235002505CF = {
 			isa = PBXGroup;
 			children = (
 				EC7B0C541EDEF7A6002505CF /* PCImageCache-Bridging-Header.h */,
-				EC48C7B71EDF9E5700E62C49 /* YYCache */,
+				EC48C7C81EDFB8D900E62C49 /* Image */,
+				EC48C7B71EDF9E5700E62C49 /* Cache */,
 				EC7B0C1D1EDED235002505CF /* PCImageCache */,
 				EC7B0C321EDED236002505CF /* PCImageCacheTests */,
 				EC7B0C3D1EDED236002505CF /* PCImageCacheUITests */,
@@ -499,9 +537,14 @@
 				EC48C7B61EDF9E3200E62C49 /* YYMemoryCache.m in Sources */,
 				EC48C7B51EDF9E3200E62C49 /* YYKVStorage.m in Sources */,
 				EC7B0C4D1EDED4EC002505CF /* YYImageCache.swift in Sources */,
+				EC48C7CC1EDFB8D900E62C49 /* YYImageCoder.m in Sources */,
+				EC48C7CB1EDFB8D900E62C49 /* YYImage.m in Sources */,
 				EC48C7B41EDF9E3200E62C49 /* YYDiskCache.m in Sources */,
+				EC48C7CD1EDFB8D900E62C49 /* YYSpriteSheetImage.m in Sources */,
 				EC7B0C1F1EDED235002505CF /* AppDelegate.swift in Sources */,
+				EC48C7CA1EDFB8D900E62C49 /* YYFrameImage.m in Sources */,
 				EC48C7B31EDF9E3200E62C49 /* YYCache.m in Sources */,
+				EC48C7C91EDFB8D900E62C49 /* YYAnimatedImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

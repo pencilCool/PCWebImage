@@ -22,6 +22,8 @@ public struct YYImageCacheType:OptionSet {
     }
 }
 
+
+
 class YYImageCache {
     var name:String? = nil
     
@@ -31,7 +33,23 @@ class YYImageCache {
     var allowAnimatedImage = true
     var decodeForDisplay = true
     
-    public static var  sharedCache = YYImageCache(with: "hehda")
+    public static var sharedCache:YYImageCache {
+        var cachePath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first!
+        cachePath = cachePath.appending("com.pencilCool.yykit")
+        let cache = YYImageCache(with: cachePath)
+        return cache
+    }
+    
+    
+    private lazy var YYImageCacheIOQueue: DispatchQueue = {
+        return DispatchQueue.global(qos: .default)
+    }()
+    
+    private lazy var YYImageCacheDecodeQueue: DispatchQueue = {
+        return DispatchQueue.global(qos: .utility)
+    }()
+    
+    
     
     init(with path:String ) {
         fatalError()
@@ -87,8 +105,43 @@ class YYImageCache {
     
     func getImageData(forKey key: String, with block:(Data?)->Void)  {
         fatalError()
-        return nil
+        
     }
     
+    private func imageCost(_ image: UIImage) -> Int {
+    
+        guard let cgImage = image.cgImage else {
+            return 1
+        }
+        let height = cgImage.height
+        let bytesPerRow = cgImage.bytesPerRow
+        let cost = bytesPerRow * height
+     
+        guard cost == 0 else {
+            return 1
+        }
+        return cost
+    }
+    
+    private func image(from data: Data) -> UIImage {
+        let scaleData = YYDiskCache.getExtendedData(from: data)
+        var scale:CGFloat = 0.0
+        if let scaleData = scaleData {
+            scale = NSKeyedUnarchiver.unarchiveObject(with: scaleData) as! CGFloat
+        }
+        if scale <= 0 {scale = UIScreen.main.scale}
+        var image: UIImage?
+        if allowAnimatedImage {
+            image = YYImage(data: data, scale: scale)!
+            if decodeForDisplay {
+                image = image?.yy_imageByDecoded()
+            }
+        } else {
+            let decoder = YYImageDecoder(data: data, scale: scale)
+            image = decoder?.frame(at: 0, decodeForDisplay: decodeForDisplay)?.image
+        }
+        return image!
+    }
     
 }
+
