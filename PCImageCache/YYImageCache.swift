@@ -26,9 +26,8 @@ public struct YYImageCacheType:OptionSet {
 
 class YYImageCache {
     var name:String? = nil
-    
-    var memoryCache:YYMemoryCache? = nil
-    var diskCache:YYDiskCache? = nil
+    var memoryCache:YYMemoryCache
+    var diskCache:YYDiskCache
 
     var allowAnimatedImage = true
     var decodeForDisplay = true
@@ -37,7 +36,7 @@ class YYImageCache {
         var cachePath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first!
         cachePath = cachePath.appending("com.pencilCool.yykit")
         let cache = YYImageCache(with: cachePath)
-        return cache
+        return cache!
     }
     
     
@@ -51,8 +50,26 @@ class YYImageCache {
     
     
     
-    init(with path:String ) {
-        fatalError()
+    init?(with path:String ) {
+        guard  let dc = YYDiskCache(path: path) else {
+            return nil
+        }
+        diskCache = dc
+        diskCache.customArchiveBlock = {(obj) -> Data in
+            return obj as! Data
+        }
+        
+        diskCache.customUnarchiveBlock = { (data) -> Any in
+            return data as Any
+        }
+        
+        memoryCache  = YYMemoryCache()
+        memoryCache.shouldRemoveAllObjectsOnMemoryWarning = true
+        memoryCache.shouldRemoveAllObjectsWhenEnteringBackground = true
+        memoryCache.countLimit = UInt.max
+        memoryCache.costLimit = UInt.max
+        memoryCache.ageLimit = 12 * 60 * 60
+        
     }
     
     // 在后台执行，迅速返回
