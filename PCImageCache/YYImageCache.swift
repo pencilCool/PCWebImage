@@ -123,47 +123,88 @@ class YYImageCache {
         }
     }
     
-    func removeImage(forKey key:String){
-        removeImage(forKey: key, with: .all)
+    
+    func removeImage(forKey key:String, with type: YYImageCacheType = .all){
+        if type.contains(.memory) {
+            memoryCache.removeObject(forKey: key)
+        }
+        if type.contains(.disk) {
+            diskCache.removeObject(forKey: key)
+        }
     }
     
-    func removeImage(forKey key:String, with type: YYImageCacheType){
-        fatalError()
-    }
-    
-    func containsImage(forKey key:String) -> Bool {
-        fatalError()
+    func containsImage(forKey key:String, with type: YYImageCacheType = .all) -> Bool {
+        if type.contains(.memory) {
+            return memoryCache.containsObject(forKey: key)
+        }
+        if type.contains(.disk) {
+            return memoryCache.containsObject(forKey: key)
+        }
         return false
     }
     
-    func containsImage(forKey key:String, with type: YYImageCacheType) -> Bool {
-        fatalError()
-        return false
-    }
+
     
-    func getImage(forKey key:String) -> UIImage? {
-        fatalError()
+    func getImage(forKey key:String, with type: YYImageCacheType = .all) -> UIImage? {
+        if type.contains(.memory) {
+            if let image = memoryCache.object(forKey: key) as? UIImage{
+                return image
+            }
+        }
+        if type.contains(.disk) {
+            if let data = diskCache.object(forKey: key) as? Data {
+                let image = self.image(from: data)
+                if type.contains(.memory) {
+                    memoryCache.setObject(image, forKey: key, withCost: imageCost(image))
+                }
+                return image
+            }
+        }
         return nil
     }
     
-    func getImage(forKey key:String, with type: YYImageCacheType) -> UIImage? {
-        fatalError()
-        return nil
-    }
-    
-    func getImage(forKey key:String, with type: YYImageCacheType, with block:(UIImage?,YYImageCacheType)-> Void) -> Data? {
-        fatalError()
-        return nil
+    func getImage(forKey key:String, with type: YYImageCacheType, with block:@escaping (UIImage?,YYImageCacheType) -> Void) {
+        DispatchQueue.global(qos: .default).async {
+            var image: UIImage!
+            if type.contains(.memory) {
+                image = self.memoryCache.object(forKey: key) as? UIImage
+                if image != nil {
+                    DispatchQueue.main.async {
+                        block(image, .memory)
+                    }
+                    return
+                }
+            }
+            if type.contains(.disk) {
+                if let data = self.diskCache.object(forKey: key) as? Data {
+                    image = self.image(from: data)
+                    if image != nil {
+                        self.memoryCache.setObject(image, forKey: key)
+                        DispatchQueue.main.async {
+                            block(image,.disk)
+                        }
+                    }
+                }
+            }
+            DispatchQueue.main.async {
+                block(nil,.none)
+            }
+     
+        }
+        
     }
     
     func getImageData(forKey key: String) -> Data? {
-        fatalError()
-        return nil
+        return diskCache.object(forKey: key) as? Data
     }
     
-    func getImageData(forKey key: String, with block:(Data?)->Void)  {
-        fatalError()
-        
+    func getImageData(forKey key: String, with block:@escaping (Data?)->Void)  {
+        DispatchQueue.global(qos: .default).async {
+            let data = self.diskCache.object(forKey: key) as? Data
+            DispatchQueue.main.async {
+                block(data)
+            }
+        }
     }
     
     private func imageCost(_ image: UIImage) -> UInt {
