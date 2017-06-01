@@ -14,8 +14,8 @@ import UIKit
 public struct YYImageCacheType:OptionSet {
     public let rawValue: Int
     public static let none    = YYImageCacheType(rawValue: 1 << 0)
-    public static let memory  = YYImageCacheType(rawValue: 1 << 0)
-    public static let disk    =  YYImageCacheType(rawValue: 1 << 0)
+    public static let memory  = YYImageCacheType(rawValue: 1 << 1)
+    public static let disk    =  YYImageCacheType(rawValue: 1 << 2)
     public static let all:     YYImageCacheType = [.memory, .disk]
     public init(rawValue: Int) {
         self.rawValue = rawValue
