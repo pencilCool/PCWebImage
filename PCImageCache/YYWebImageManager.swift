@@ -10,6 +10,10 @@ import Foundation
 
 private var networkIndicatorInfoKey: Void?
 
+
+
+
+
 struct YYWebImageApplicationNetworkIndicatorInfo {
     var count: Int = 0
     var timer: Timer!
@@ -162,9 +166,7 @@ class YYWebImageManager {
      // MARK: - Network Indicator
     
 
-    static func YYSharedApplication() -> UIApplication? {
-        return  nil
-    }
+ 
 
     static var  networkIndicatorInfo:YYWebImageApplicationNetworkIndicatorInfo? {
         get {
@@ -177,7 +179,7 @@ class YYWebImageManager {
     
     
     @objc static func delaySetActivity(_ timer: Timer) {
-        guard let  app = YYWebImageManager.YYSharedApplication() else {return}
+        guard let  app = YYShared.application() else {return}
         let  visiable = timer.userInfo as! Bool
         if app.isNetworkActivityIndicatorVisible != visiable {
             app.isNetworkActivityIndicatorVisible = true
@@ -187,7 +189,7 @@ class YYWebImageManager {
 
    
     static func  changeNetworkActivityCount(delta: Int) {
-        guard let  _ = YYWebImageManager.YYSharedApplication() else {
+        guard let  _ = YYShared.application() else {
             return
         }
         

@@ -25,6 +25,7 @@ public extension DispatchQueue {
 
 
 
+
 class YYWebImageOperation: Operation {
     
     public private(set) var request:URLRequest
@@ -73,12 +74,23 @@ class YYWebImageOperation: Operation {
             didChangeValue(forKey: "isFinished")
         }
     }
+    
+    
+    private  var _cancel: Bool = false
+    override var isCancelled : Bool {
+        get { return _cancel }
+        set {
+            guard _cancel != newValue else { return }
+            willChangeValue(forKey: "isCancelled")
+            _finished = newValue
+            didChangeValue(forKey: "isCancelled")
+        }
+    }
+    
+    
 
 
-    private static let _networkThread:Thread = {
-        let thread = Thread(target: self, selector: #selector(_networkThreadMain), object: nil)
-        return thread
-    }()
+
     
 
     
@@ -99,9 +111,105 @@ class YYWebImageOperation: Operation {
             super.init()
     }
     
+    deinit {
+        self.lock.lock()
+        if self.taskID != UIBackgroundTaskInvalid {
+            YYShared.application()?.endBackgroundTask(self.taskID)
+            self.taskID = UIBackgroundTaskInvalid
+        }
+        if self.isExecuting {
+            self.isCancelled = true
+            self.isFinished  = true
+            if self.connection != nil {
+                if !self.request.url!.isFileURL  && self.options.contains(.showNetworkActivit) {
+                    YYWebImageManager.decrementNetworkActivityCount()
+                }
+            }
+            
+        if self.completion != nil {
+                autoreleasepool {
+                    do{
+                        try self.completion!(nil, self.request.url!, .memoryCache, .cancelled)
+                    } catch _ {}
+                }
+            }
+            
+        }
+        self.lock.unlock()
+        
+    }
+    
+    func endBackgroundTask() {
+        self.lock.lock()
+        if self.taskID != UIBackgroundTaskInvalid {
+            YYShared.application()?.endBackgroundTask(self.taskID)
+            self.taskID = UIBackgroundTaskInvalid
+        }
+        
+        self.lock.unlock()
+    }
+    
+    private func finish() {
+        self.isExecuting = false
+        self.isFinished = false
+        self.endBackgroundTask()
+    }
+    
+    private static let networkThread:Thread = {
+        let thread = Thread(target: self, selector: #selector(networkThreadMain), object: nil)
+        return thread
+    }()
+    
+    private func startOperation(){
+        guard !self.isCancelled  else {
+            return
+        }
+        autoreleasepool {
+            if self.cache != nil && !self.options.contains(.useNSURLCache)
+                && !self.options.contains(.refreshImageCache) {
+                if let image = self.cache!.getImage(forKey: self.cacheKey, with: .memory) {
+                    self.lock.lock()
+                    if !self.isCancelled {
+                        do {
+                        try self.completion?(image,self.request.url!,.memoryCache, .finished)
+                        } catch _ {}
+                    }
+                    self.lock.unlock()
+                }
+                
+            }
+            
+            if !self.options.contains(.ignoreDiskCache) {
+                imageQueue.async {
+                    [weak self] in
+                    if self == nil || self!.isCancelled {return}
+                    if let image = self!.cache?.getImage(forKey: self!.cacheKey, with: .disk) {
+                        self?.cache?.setImage(image, imageData: nil, forKey: self!.cacheKey, with: .memory)
+                        self?.perform(#selector(YYWebImageOperation.didReceiveImageFromDiskCache(image:)), on:YYWebImageOperation.networkThread, with: image, waitUntilDone: false)
+                    } else {
+                        self?.perform(#selector(YYWebImageOperation.startRequest(_:)), on: YYWebImageOperation.networkThread, with: nil, waitUntilDone: false)
+                    }
+  
+                } // async 
+                
+                
+                return
+                
+            }
+        }
+        self.perform(#selector(startRequest(_:)), on: YYWebImageOperation.networkThread , with: nil, waitUntilDone: false)
+        
+    }
+    
+    @objc private func startRequest(_ object: Any) {
+        if self.isCancelled {return}
+        autoreleasepool{
+            if self.options.contains(.ignoreFailedUR) &&
+        }
+    }
    
     
-    @objc private static func _networkThreadMain(object:Any) {
+    @objc private static func networkThreadMain(object:Any) {
         autoreleasepool {
             Thread.current.name = "com.pencilCool.webimage.request"
             let runLoop = RunLoop.current
@@ -137,9 +245,56 @@ class YYWebImageOperation: Operation {
         return queues
     }()
     
+    
+    @objc private func didReceiveImageFromDiskCache(image: UIImage) {
+        autoreleasepool{
+            
+        }
+    }
 
 }
 
-extension YYWebImageOperation:NSURLConnectionDelegate {
+// black list
+private var URLBlacklistKey:UInt8 = 0
+extension YYWebImageOperation {
+    
+    var URLBlacklist: NSMutableSet { // cat「实际上」是一个存储属性
+        get {
+            return associatedObject(base: self, key: &URLBlacklistKey)
+            { return NSMutableSet() } // 设置变量的初始值
+        }
+        set { associateObject(base: self, key: &URLBlacklistKey, value: newValue) }
+    }
+    
+    
+    static dispatch_semaphore_t URLBlacklistLock;
+    
+    static void URLBlacklistInit() {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+    URLBlacklist = [NSMutableSet new];
+    URLBlacklistLock = dispatch_semaphore_create(1);
+    });
+    }
+    
+    static BOOL URLBlackListContains(NSURL *url) {
+    if (!url || url == (id)[NSNull null]) return NO;
+    URLBlacklistInit();
+    dispatch_semaphore_wait(URLBlacklistLock, DISPATCH_TIME_FOREVER);
+    BOOL contains = [URLBlacklist containsObject:url];
+    dispatch_semaphore_signal(URLBlacklistLock);
+    return contains;
+    }
+    
+    static void URLInBlackListAdd(NSURL *url) {
+    if (!url || url == (id)[NSNull null]) return;
+    URLBlacklistInit();
+    dispatch_semaphore_wait(URLBlacklistLock, DISPATCH_TIME_FOREVER);
+    [URLBlacklist addObject:url];
+    dispatch_semaphore_signal(URLBlacklistLock);
+    }
+    
+
+    
     
 }

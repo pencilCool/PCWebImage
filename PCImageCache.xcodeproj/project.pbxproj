@@ -10,6 +10,7 @@
 		26CE71BBE94D154C16DB41C6 /* Pods_PCImageCacheUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB9F97B7F6D210CCD7E31D6 /* Pods_PCImageCacheUITests.framework */; };
 		704E1DAADBB75C505876CA57 /* Pods_PCImageCacheTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 107B6436607149951E2FEF51 /* Pods_PCImageCacheTests.framework */; };
 		CDDBAD6F0D872AE61BCEC696 /* Pods_PCImageCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C05B445AEC3887211EC158A0 /* Pods_PCImageCache.framework */; };
+		EC3FC46F1EE162F400826427 /* PCHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3FC46E1EE162F400826427 /* PCHelper.swift */; };
 		EC48C7B31EDF9E3200E62C49 /* YYCache.m in Sources */ = {isa = PBXBuildFile; fileRef = EC48C7AC1EDF9E3200E62C49 /* YYCache.m */; };
 		EC48C7B41EDF9E3200E62C49 /* YYDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = EC48C7AE1EDF9E3200E62C49 /* YYDiskCache.m */; };
 		EC48C7B51EDF9E3200E62C49 /* YYKVStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = EC48C7B01EDF9E3200E62C49 /* YYKVStorage.m */; };
@@ -60,6 +61,7 @@
 		C1CEE04F1F877C1CCEFAAA5B /* Pods-PCImageCacheUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PCImageCacheUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PCImageCacheUITests/Pods-PCImageCacheUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DA366E06C83CF1313EE6275C /* Pods-PCImageCache.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PCImageCache.release.xcconfig"; path = "Pods/Target Support Files/Pods-PCImageCache/Pods-PCImageCache.release.xcconfig"; sourceTree = "<group>"; };
 		DCB9F97B7F6D210CCD7E31D6 /* Pods_PCImageCacheUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PCImageCacheUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC3FC46E1EE162F400826427 /* PCHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PCHelper.swift; sourceTree = "<group>"; };
 		EC48C7AB1EDF9E3200E62C49 /* YYCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYCache.h; sourceTree = "<group>"; };
 		EC48C7AC1EDF9E3200E62C49 /* YYCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYCache.m; sourceTree = "<group>"; };
 		EC48C7AD1EDF9E3200E62C49 /* YYDiskCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYDiskCache.h; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 				EC7B0C4C1EDED4EC002505CF /* YYImageCache.swift */,
 				EC48C7D01EDFF18000E62C49 /* YYWebImageManager.swift */,
 				EC48C7D21EDFF19C00E62C49 /* YYWebImageOperation.swift */,
+				EC3FC46E1EE162F400826427 /* PCHelper.swift */,
 			);
 			name = PCImageCache;
 			sourceTree = "<group>";
@@ -552,6 +555,7 @@
 				EC7B0C1F1EDED235002505CF /* AppDelegate.swift in Sources */,
 				EC48C7CA1EDFB8D900E62C49 /* YYFrameImage.m in Sources */,
 				EC48C7B31EDF9E3200E62C49 /* YYCache.m in Sources */,
+				EC3FC46F1EE162F400826427 /* PCHelper.swift in Sources */,
 				EC48C7C91EDFB8D900E62C49 /* YYAnimatedImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
