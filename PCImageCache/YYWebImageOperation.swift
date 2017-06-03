@@ -251,50 +251,22 @@ class YYWebImageOperation: Operation {
             
         }
     }
+    static let URLBlacklistLock: DispatchSemaphore =  DispatchSemaphore(value: 1)
+    static var URLBlacklist: NSMutableSet =  NSMutableSet()
+
+    static func URLBlackListContains(url: URL) -> Bool {
+        URLBlacklistLock.wait()
+        let bool = URLBlacklist.contains(url)
+        URLBlacklistLock.signal()
+        return bool
+    }
+
+    
+    static func URLInBlackListAdd(url:URL) {
+        URLBlacklistLock.wait()
+        URLBlacklist.add(url)
+        URLBlacklistLock.signal()
+    } 
 
 }
 
-// black list
-private var URLBlacklistKey:UInt8 = 0
-extension YYWebImageOperation {
-    
-    var URLBlacklist: NSMutableSet { // cat「实际上」是一个存储属性
-        get {
-            return associatedObject(base: self, key: &URLBlacklistKey)
-            { return NSMutableSet() } // 设置变量的初始值
-        }
-        set { associateObject(base: self, key: &URLBlacklistKey, value: newValue) }
-    }
-    
-    
-    static dispatch_semaphore_t URLBlacklistLock;
-    
-    static void URLBlacklistInit() {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-    URLBlacklist = [NSMutableSet new];
-    URLBlacklistLock = dispatch_semaphore_create(1);
-    });
-    }
-    
-    static BOOL URLBlackListContains(NSURL *url) {
-    if (!url || url == (id)[NSNull null]) return NO;
-    URLBlacklistInit();
-    dispatch_semaphore_wait(URLBlacklistLock, DISPATCH_TIME_FOREVER);
-    BOOL contains = [URLBlacklist containsObject:url];
-    dispatch_semaphore_signal(URLBlacklistLock);
-    return contains;
-    }
-    
-    static void URLInBlackListAdd(NSURL *url) {
-    if (!url || url == (id)[NSNull null]) return;
-    URLBlacklistInit();
-    dispatch_semaphore_wait(URLBlacklistLock, DISPATCH_TIME_FOREVER);
-    [URLBlacklist addObject:url];
-    dispatch_semaphore_signal(URLBlacklistLock);
-    }
-    
-
-    
-    
-}
